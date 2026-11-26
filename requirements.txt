@@ -1,0 +1,23 @@
+torch>=2.1
+torchvision
+pytorch-lightning==2.2.4
+torchmetrics==1.3.2
+transformers>=4.35.0
+peft>=0.10.0
+sentence-transformers
+git+https://github.com/openai/CLIP.git
+ftfy
+regex
+scikit-learn
+pandas
+numpy
+matplotlib
+Pillow
+tqdm
+pytesseract
+easyocr
+duckduckgo-search
+# demo app
+flask
+flask-cors
+pyngrok

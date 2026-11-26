@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.virtual_documents/
+*.egg-info/
+
+# Environments
+env/
+venv/
+.venv/
+*_env/
+
+# Data & large artifacts (download separately — see README)
+data/
+datasets/
+checkpoints/
+lightning_logs/
+*.ckpt
+*.pth
+*.pt
+*.pkl
+*.zip
+
+# Secrets
+.env
+kaggle.json
+
+# OS
+.DS_Store

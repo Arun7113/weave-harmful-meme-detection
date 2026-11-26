@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      width: 300px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0f1117;
+      color: #e8e8e8;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #d62728 0%, #8b1a1a 100%);
+      padding: 16px 18px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .header-icon { font-size: 26px; }
+    .header-title { font-size: 15px; font-weight: 700; color: white; }
+    .header-sub   { font-size: 11px; color: rgba(255,255,255,0.75); margin-top: 2px; }
+
+    .body { padding: 14px 16px; }
+
+    .status-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #1a1d27;
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-bottom: 12px;
+    }
+    .dot {
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: #888;
+      flex-shrink: 0;
+    }
+    .dot.green  { background: #2ca02c; box-shadow: 0 0 6px #2ca02c; }
+    .dot.red    { background: #d62728; box-shadow: 0 0 6px #d62728; }
+    .dot.orange { background: #ff7f0e; box-shadow: 0 0 6px #ff7f0e; }
+    .status-text { font-size: 12px; color: #ccc; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .stat-box {
+      background: #1a1d27;
+      border-radius: 8px;
+      padding: 10px 12px;
+      text-align: center;
+    }
+    .stat-num  { font-size: 22px; font-weight: 700; color: white; }
+    .stat-num.red { color: #d62728; }
+    .stat-label { font-size: 10px; color: #888; margin-top: 2px; }
+
+    .model-info {
+      background: #1a1d27;
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-bottom: 14px;
+    }
+    .model-title { font-size: 11px; font-weight: 600; color: #aaa; margin-bottom: 6px; }
+    .tag {
+      display: inline-block;
+      background: #2a2d3a;
+      border: 1px solid #3a3d4a;
+      color: #ccc;
+      font-size: 10px;
+      padding: 2px 7px;
+      border-radius: 10px;
+      margin: 2px 2px 2px 0;
+    }
+
+    .url-row { margin-bottom: 14px; }
+    .url-label { font-size: 11px; color: #888; margin-bottom: 4px; }
+    .url-input {
+      width: 100%;
+      background: #1a1d27;
+      border: 1px solid #3a3d4a;
+      border-radius: 6px;
+      color: #e8e8e8;
+      font-size: 11px;
+      padding: 7px 10px;
+      outline: none;
+    }
+    .url-input:focus { border-color: #d62728; }
+
+    .btn {
+      width: 100%;
+      padding: 9px;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      background: #d62728;
+      color: white;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: #b52020; }
+    .btn:disabled { background: #555; cursor: default; }
+
+    .footer {
+      padding: 8px 16px 12px;
+      font-size: 10px;
+      color: #555;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-icon">🛡️</div>
+  <div>
+    <div class="header-title">Hateful Meme Shield</div>
+    <div class="header-sub">4-Modal AI Detection · Real-time</div>
+  </div>
+</div>
+
+<div class="body">
+
+  <!-- API Status -->
+  <div class="status-row">
+    <div class="dot" id="statusDot"></div>
+    <div class="status-text" id="statusText">Checking API...</div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat-box">
+      <div class="stat-num" id="totalCount">—</div>
+      <div class="stat-label">Images Scanned</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num red" id="hatefulCount">—</div>
+      <div class="stat-label">Hateful Blurred</div>
+    </div>
+  </div>
+
+  <!-- Model info badges -->
+  <div class="model-info">
+    <div class="model-title">MODEL PIPELINE</div>
+    <span class="tag">🖼 CLIP ViT-L/14</span>
+    <span class="tag">📝 LiLT Layout</span>
+    <span class="tag">🔁 TextualInversion</span>
+    <span class="tag">🌐 Web Context</span>
+    <span class="tag">⚡ QuadModal Fusion</span>
+  </div>
+
+  <!-- API URL input -->
+  <div class="url-row">
+    <div class="url-label">ngrok API URL</div>
+    <input type="text" class="url-input" id="apiUrl" placeholder="https://xxxx.ngrok-free.app">
+  </div>
+
+  <button class="btn" id="saveBtn">Save & Reconnect</button>
+
+</div>
+
+<div class="footer">
+  Hover over blurred image to preview · Click to fully reveal
+</div>
+
+<script src="popup.js"></script>
+</body>
+</html>
